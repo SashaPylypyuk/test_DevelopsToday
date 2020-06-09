@@ -1,5 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
+body, html {
+  height: 100%;
+}
+
+#root{
+  height: 100%;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -55,4 +63,77 @@
   font-size: large;
   text-decoration: none;
   color: #fff;
+}
+
+.singlePost {
+  padding: 50px;
+}
+
+.singlePost__header {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.singlePost__body {
+  width: 100%;
+  text-align: center;
+}
+
+.wrongPage {
+  width: 100%;
+  margin: 100px 0;
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+}
+
+.createPost {
+  background-color: #EFB27B;
+  color: #6FA9BB;
+  width: 100%;
+  text-align: center;
+  padding: 15px 0;
+  font-size: 30px;
+}
+
+.createPost__wrapper {
+  height: 100%;
+  background-color: #EFB27B;
+}
+
+.form {
+  font-size: 25px;
+  margin: 0 auto;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+}
+
+.form__input {
+  color:#2E2526;
+  font-size: 15px;
+  outline: none;
+  border-radius: 10px;
+  border: solid 1px #6FA9BB;
+  margin-bottom: 30px;
+  padding: 12px;
+}
+
+.form__button {
+  border: 1px solid #6FA9BB;
+  background-color: #6FA9BB;
+  color: #fff;
+  font-size: 20px;
+  width: 300px;
+  border-radius: 40px;
+  padding: 15px;
+  margin: 0 auto 50px;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
 }

@@ -1,8 +1,17 @@
 import React, { useState } from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from 'react-router-dom';
+import { Post } from './components/Post';
 import './App.css';
 import { getPosts } from './api';
 import { Posts } from './components/Posts';
 import { Pagination } from './components/Pagination';
+import { Header } from './components/Header';
+import { CreatePosts } from './components/CreatePost';
 
 
 const App = () => {
@@ -30,17 +39,35 @@ const App = () => {
 
   return (
     <>
-      <header className="header">
-        <h1 className="header__text">
-          Blog for DevelopToday
-        </h1>
-      </header>
-      <Posts posts={currentPosts} />
-      <Pagination
-        postsPerPage={postsPerPage}
-        totalPosts={posts?.length}
-        paginate={paginate}
-      />
+      <Header />
+      {typeof (posts) === 'object' ? (
+        <Router>
+          <Link to="/createPost">
+            <p className="createPost">
+              Creat post
+            </p>
+          </Link>
+          <Switch>
+            <Route path="/createPost">
+              <CreatePosts />
+            </Route>
+            <Route exact path="/">
+
+              <Posts posts={currentPosts} />
+              <Pagination
+                postsPerPage={postsPerPage}
+                totalPosts={posts?.length}
+                paginate={paginate}
+              />
+            </Route>
+            <Route path="/:id" children={<Post posts={posts} />} />
+
+          </Switch>
+        </Router>
+      ) : (
+        loadPosts()
+      )}
+
     </>
   );
 };

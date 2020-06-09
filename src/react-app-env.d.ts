@@ -6,3 +6,14 @@ interface Post {
   title: string;
   body: string;
 }
+
+interface Comment {
+  id: number;
+  postId: number;
+  body: string;
+}
+
+interface PostWithComments {
+  post: Post;
+  comment: Comment;
+}
