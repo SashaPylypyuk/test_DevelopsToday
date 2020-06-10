@@ -69,9 +69,7 @@ const App = () => {
                 </p>
               </Link>
             </Route>
-            <Route path="/:id">
-              <Post posts={posts} />
-            </Route>
+            <Route path="/:id" children={<Post posts={posts} />} />
           </Switch>
         </Router>
       ) : (

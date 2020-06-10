@@ -11,7 +11,7 @@ export const Post = ({ posts }) => {
   let post;
   let isWrongId = false;
 
-  id = Number.parseInt(id);
+  id = Number.parseInt(id, 10);
 
   const loadComments = () => {
     Promise.resolve(getComments(id)).then(rawComments => {
