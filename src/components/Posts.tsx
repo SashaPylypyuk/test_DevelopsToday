@@ -7,7 +7,7 @@ export const Posts = ({ posts }) => {
 
     <section className="posts">
       {posts?.map(post => (
-        <a href={`/${post.id}`}>
+        <a href={`/test_DevelopsToday/${post.id}`}>
           <div className="post">
             <p className="post__id">
               id is

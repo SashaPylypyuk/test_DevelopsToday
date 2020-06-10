@@ -45,14 +45,14 @@ const App = () => {
         <Router>
 
           <Switch>
-            <Route path="/deletePost">
+            <Route path="/test_DevelopsToday/deletePost">
               <DeletePost />
             </Route>
-            <Route path="/createPost">
+            <Route path="/test_DevelopsToday/createPost">
               <CreatePosts />
             </Route>
-            <Route exact path="/">
-              <Link to="/createPost">
+            <Route exact path="/test_DevelopsToday/">
+              <Link to="/test_DevelopsToday/createPost">
                 <p className="createPost">
                   Creat post
                 </p>
@@ -63,13 +63,13 @@ const App = () => {
                 totalPosts={posts?.length}
                 paginate={paginate}
               />
-              <Link to="/deletePost">
+              <Link to="/test_DevelopsToday/deletePost">
                 <p className="deletePost">
                   Delete Post
                 </p>
               </Link>
             </Route>
-            <Route path="/:id" children={<Post posts={posts} />} />
+            <Route path="/test_DevelopsToday/:id" children={<Post posts={posts} />} />
           </Switch>
         </Router>
       ) : (
