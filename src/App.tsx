@@ -3,7 +3,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Link,
 } from 'react-router-dom';
 import { Post } from './components/Post';
 import './App.css';
@@ -12,6 +12,7 @@ import { Posts } from './components/Posts';
 import { Pagination } from './components/Pagination';
 import { Header } from './components/Header';
 import { CreatePosts } from './components/CreatePost';
+import { DeletePost } from './components/DeletePost';
 
 
 const App = () => {
@@ -42,26 +43,35 @@ const App = () => {
       <Header />
       {typeof (posts) === 'object' ? (
         <Router>
-          <Link to="/createPost">
-            <p className="createPost">
-              Creat post
-            </p>
-          </Link>
+
           <Switch>
+            <Route path="/deletePost">
+              <DeletePost />
+            </Route>
             <Route path="/createPost">
               <CreatePosts />
             </Route>
             <Route exact path="/">
-
+              <Link to="/createPost">
+                <p className="createPost">
+                  Creat post
+                </p>
+              </Link>
               <Posts posts={currentPosts} />
               <Pagination
                 postsPerPage={postsPerPage}
                 totalPosts={posts?.length}
                 paginate={paginate}
               />
+              <Link to="/deletePost">
+                <p className="deletePost">
+                  Delete Post
+                </p>
+              </Link>
             </Route>
-            <Route path="/:id" children={<Post posts={posts} />} />
-
+            <Route path="/:id">
+              <Post posts={posts} />
+            </Route>
           </Switch>
         </Router>
       ) : (

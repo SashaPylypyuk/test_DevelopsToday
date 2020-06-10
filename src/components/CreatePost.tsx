@@ -1,7 +1,8 @@
-import React, { useState, ChangeEvent } from 'react';
+import React, { useState, ChangeEvent, FC } from 'react';
 import '../App.css';
+import { setPost } from '../api';
 
-export const CreatePosts = () => {
+export const CreatePosts: FC = () => {
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
 
@@ -9,15 +10,25 @@ export const CreatePosts = () => {
     const { value } = e.target;
 
     setTitle(value);
-
-    console.log(title);
   };
 
   const bodyChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     const { value } = e.target;
 
     setBody(value);
-    console.log(body);
+  };
+
+  const createPost = () => {
+    const post = {
+      title,
+      body,
+    };
+
+    setTitle('');
+    setBody('');
+    setPost(post);
+
+    alert('Post created!!!');
   };
 
   return (
@@ -26,12 +37,12 @@ export const CreatePosts = () => {
         <label>
           Write a title
         </label>
-        <input type="text" className="form__input" onChange={titleChange}/>
+        <input type="text" className="form__input" onChange={titleChange} value={title} />
         <label>
           Write a body
         </label>
-        <textarea name="comment" className="form__input" onChange={bodyChange}/>
-        <button className="form__button" type="submit">
+        <textarea name="comment" className="form__input" onChange={bodyChange} value={body} />
+        <button className="form__button" type="button" onClick={createPost}>
           Create post
         </button>
       </form>
